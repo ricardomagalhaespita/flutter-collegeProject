@@ -67,6 +67,8 @@ flutter:
   assets:
    - assets/images/wallpaper.jpg
    - assets/images/risa.png
+   - assets/images/cardapio1.png
+   - assets/images/cardapio2.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

@@ -39,127 +39,17 @@ class homePage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: SizedBox(
+      body: Container(
+        //constraints: BoxConstraints.expand(),
+        height: double.infinity,
         width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 200,
-              child: Container(
-                color: Colors.white,
-                width: double.infinity,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Teste',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Text(
-                        'Teste',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Teste',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          Text(
-                            'Teste',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
-                      )
-                    ]),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  '1',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '2',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '3',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  '4',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '5',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '6',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  '7',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '8',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '9',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  color: Colors.black,
-                  width: 50,
-                  height: 50,
-                ),
-                Text(
-                  '0',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Container(
-                  color: Colors.black,
-                  width: 50,
-                  height: 50,
-                ),
-              ],
-            ),
-          ],
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            //alignment: Alignment.center,
+            image: AssetImage('assets/images/cardapio1.png'),
+            fit: BoxFit.cover,
+            //image: NetworkImage('link imagem web')
+          ),
         ),
       ),
      drawer: Drawer(
