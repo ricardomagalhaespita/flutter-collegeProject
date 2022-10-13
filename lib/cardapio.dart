@@ -39,17 +39,14 @@ class homePage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: Container(
-        //constraints: BoxConstraints.expand(),
-        height: double.infinity,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            //alignment: Alignment.center,
-            image: AssetImage('assets/images/cardapio1.png'),
-            fit: BoxFit.cover,
-            //image: NetworkImage('link imagem web')
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/cardapio1.png'),
+            Image.asset('assets/images/cardapio2.png'),
+          ],
         ),
       ),
      drawer: Drawer(
