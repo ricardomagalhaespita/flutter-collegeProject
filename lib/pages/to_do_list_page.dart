@@ -7,8 +7,10 @@ import '../inicio.dart';
 import '../cardapio.dart';
 import '../contagem.dart';
 import '../calculadora.dart';
-import '../api.dart';
+import '../combosClassicos.dart';
 import '../pages/to_do_list_page.dart';
+import '../combosEspeciais.dart';
+import '../drawer.dart';
 
 class toDoListPage extends StatefulWidget {
   toDoListPage({super.key});
@@ -42,183 +44,110 @@ class _toDoListPageState extends State<toDoListPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: meuDrawer(),
         appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 37, 35, 35),
-        centerTitle: true,
-        title: const Text(
-          'Pedido',
-          style: TextStyle(color: Colors.white),
+          backgroundColor: Color.fromARGB(255, 37, 35, 35),
+          centerTitle: true,
+          title: const Text(
+            'Pedido',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-      ),
         body: Center(
-            child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    //flex: 2,
-                    child: TextField(
-                      controller: toDoController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Adicione um Pedido',
-                        hintText: 'Ex: X-Salada, sem salada',
-                        errorText: errorText,
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      //flex: 2,
+                      child: TextField(
+                        controller: toDoController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Adicione um Pedido',
+                          hintText: 'Ex: X-Salada, sem salada',
+                          errorText: errorText,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                            ),
+                          ),
+                          labelStyle: TextStyle(
                             color: Colors.black,
-                            width: 2,
                           ),
                         ),
-                        labelStyle: TextStyle(
-                          color: Colors.black,
-                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(width: 8),
-                  ElevatedButton(
-                    onPressed: () {
-                      String text = toDoController.text;
-                      if (text.isEmpty) {
-                        errorText = 'O pedido não pode ser vazio!';
-                        return;
-                      }
-                      setState(() {
-                        Todo newTodo = Todo(
-                          title: text,
-                          dateTime: DateTime.now(),
-                        );
-                        toDos.add(newTodo);
-                        errorText = null;
-                      });
-                      toDoController.clear();
-                      todoRepository.saveTodoList(toDos);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 0, 0, 0),
-                      padding: const EdgeInsets.all(15),
-                    ),
-                    child: Icon(
-                      Icons.add,
-                      size: 30,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
-              Flexible(
-                child: ListView(
-                  shrinkWrap: true,
-                  children: [
-                    for (Todo toDo in toDos)
-                      TodoListItem(
-                        toDo: toDo,
-                        onDelete: onDelete,
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        String text = toDoController.text;
+                        if (text.isEmpty) {
+                          errorText = 'O pedido não pode ser vazio!';
+                          return;
+                        }
+                        setState(() {
+                          Todo newTodo = Todo(
+                            title: text,
+                            dateTime: DateTime.now(),
+                          );
+                          toDos.add(newTodo);
+                          errorText = null;
+                        });
+                        toDoController.clear();
+                        todoRepository.saveTodoList(toDos);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 0, 0, 0),
+                        padding: const EdgeInsets.all(15),
                       ),
+                      child: Icon(
+                        Icons.add,
+                        size: 30,
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Você possui ${toDos.length} pedidos feitos',
-                    ),
+                SizedBox(height: 16),
+                Flexible(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      for (Todo toDo in toDos)
+                        TodoListItem(
+                          toDo: toDo,
+                          onDelete: onDelete,
+                        ),
+                    ],
                   ),
-                  SizedBox(width: 8),
-                  ElevatedButton(
-                    onPressed: showDeletetoDosConfirmationDialog,
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                      padding: const EdgeInsets.all(15),
-                    ),
-                    child: Text('Limpar Pedidos'),
-                  )
-                ],
-              )
-            ],
-          ),
-        )),
-        drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                image: DecorationImage(
-                  alignment: Alignment.center,
-                  image: AssetImage('assets/images/risa.png'),
-                 // fit: BoxFit.cover,
                 ),
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Você possui ${toDos.length} pedidos feitos',
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: showDeletetoDosConfirmationDialog,
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.black,
+                        padding: const EdgeInsets.all(15),
+                      ),
+                      child: Text('Limpar Pedidos'),
+                    )
+                  ],
+                )
+              ],
             ),
-            ListTile(
-              leading: Icon(Icons.home_rounded),
-              title: Text("Inicio"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Inicio(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.ballot_rounded),
-              title: Text("Cardápio"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Cardapio(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.assignment_rounded),
-              title: Text("Pedido"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => toDoListPage(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.accessibility_new_rounded),
-              title: Text("Contagem de Clientes"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Contagem(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.calculate_rounded),
-              title: Text("Calculadora"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Calculadora(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.integration_instructions_rounded),
-              title: Text("API's"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Api(),
-                ));
-              },
-            ),
-          ],
+          ),
         ),
-      ),
       ),
     );
   }

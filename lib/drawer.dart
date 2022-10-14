@@ -1,76 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import 'inicio.dart';
 import 'cardapio.dart';
-import 'pages/to_do_list_page.dart';
 import 'contagem.dart';
 import 'calculadora.dart';
-import 'api.dart';
+import 'combosClassicos.dart';
+import 'pages/to_do_list_page.dart';
+import 'combosEspeciais.dart';
+import 'drawer.dart';
 
-void getHttp() async {
-  try {
-    var response = await Dio().get('http://localhost:3000/combos-classicos');
-    //  await Dio().get('https://jsonplaceholder.typicode.com/todos/1');
-    print(response);
-  } catch (e) {
-    print(e);
-  }
-}
-//https://github.com/typicode/json-server  -- Usado para criar a API Local.
-
-class Api extends StatelessWidget {
-  const Api({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
-      home: homePage(),
-    );
-  }
-}
-
-class homePage extends StatelessWidget {
-  const homePage({Key? key}) : super(key: key);
+class meuDrawer extends StatelessWidget {
+  const meuDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 37, 35, 35),
-        centerTitle: true,
-        title: const Text(
-          'APIs',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton.icon(
-              onPressed: () {
-                getHttp();
-              },
-              icon: Icon(Icons.add, size: 18),
-              label: Text("Consultar Combos Simples"),
-            ),
-          ],
-        ),
-      ),
-      drawer: Drawer(
+    return Drawer(
         child: ListView(
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.black,
+                image: DecorationImage(
+                  alignment: Alignment.center,
+                  image: AssetImage('assets/images/risa.png'),
+                 // fit: BoxFit.cover,
+                ),
               ),
               child: Text(
                 'Menu',
@@ -124,17 +77,25 @@ class homePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.integration_instructions_rounded),
-              title: Text("API's"),
+              leading: Icon(Icons.fastfood_rounded),
+              title: Text("Combos-Clássicos"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Api(),
+                  builder: (context) => combosClassicos(),
+                ));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.fastfood_rounded),
+              title: Text("Combos-Especiais"),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => combosEspeciais(),
                 ));
               },
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }

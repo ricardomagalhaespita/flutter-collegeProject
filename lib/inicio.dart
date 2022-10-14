@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_project/drawer.dart';
 import 'inicio.dart';
 import 'cardapio.dart';
 import 'contagem.dart';
 import 'calculadora.dart';
-import 'api.dart';
+import 'combosClassicos.dart';
 import 'pages/to_do_list_page.dart';
+import 'combosEspeciais.dart';
+import 'drawer.dart';
 
 class Inicio extends StatelessWidget {
   const Inicio({Key? key}) : super(key: key);
@@ -30,6 +32,7 @@ class homePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: meuDrawer(),
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 37, 35, 35),
@@ -41,8 +44,8 @@ class homePage extends StatelessWidget {
       ),
       body: Container(
         constraints: BoxConstraints.expand(),
-     //   height: double.infinity,
-      //  width: double.infinity,
+        //   height: double.infinity,
+        //  width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
             //alignment: Alignment.center,
@@ -50,81 +53,6 @@ class homePage extends StatelessWidget {
             //fit: BoxFit.cover,
             //image: NetworkImage('link imagem web')
           ),
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                image: DecorationImage(
-                  alignment: Alignment.center,
-                  image: AssetImage('assets/images/risa.png'),
-                 // fit: BoxFit.cover,
-                ),
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home_rounded),
-              title: Text("Inicio"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Inicio(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.ballot_rounded),
-              title: Text("Cardápio"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Cardapio(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.assignment_rounded),
-              title: Text("Pedido"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => toDoListPage(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.accessibility_new_rounded),
-              title: Text("Contagem de Clientes"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Contagem(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.calculate_rounded),
-              title: Text("Calculadora"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Calculadora(),
-                ));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.integration_instructions_rounded),
-              title: Text("API's"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Api(),
-                ));
-              },
-            ),
-          ],
         ),
       ),
     );
