@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
-
+import 'package:dio/dio.dart';
 import 'inicio.dart';
 import 'cardapio.dart';
 import 'pages/to_do_list_page.dart';
 import 'contagem.dart';
 import 'calculadora.dart';
 import 'api.dart';
+
+void getHttp() async {
+  try {
+    var response = await Dio().get('http://localhost:3000/combos-classicos');
+    //  await Dio().get('https://jsonplaceholder.typicode.com/todos/1');
+    print(response);
+  } catch (e) {
+    print(e);
+  }
+}
+//https://github.com/typicode/json-server  -- Usado para criar a API Local.
 
 class Api extends StatelessWidget {
   const Api({Key? key}) : super(key: key);
@@ -39,125 +50,17 @@ class homePage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: SizedBox(
-        width: double.infinity,
+      body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 200,
-              child: Container(
-                color: Colors.white,
-                width: double.infinity,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Teste',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Text(
-                        'Teste',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Teste',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          Text(
-                            'Teste',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
-                      )
-                    ]),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  '1',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '2',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '3',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  '4',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '5',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '6',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  '7',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '8',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  '9',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  color: Colors.black,
-                  width: 50,
-                  height: 50,
-                ),
-                Text(
-                  '0',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                Container(
-                  color: Colors.black,
-                  width: 50,
-                  height: 50,
-                ),
-              ],
+            ElevatedButton.icon(
+              onPressed: () {
+                getHttp();
+              },
+              icon: Icon(Icons.add, size: 18),
+              label: Text("Consultar Combos Simples"),
             ),
           ],
         ),

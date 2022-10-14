@@ -1,0 +1,15 @@
+{
+    "combos-classicos":[ 
+      {"id": 1, "nome":"COMBO-01", "lanche":"X-SALADA", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 30,00"},
+      {"id": 2, "nome":"COMBO-02", "lanche":"X-QUEIJO", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 30,00"},
+      {"id": 3, "nome":"COMBO-03", "lanche":"X-BACON", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 30,00"},
+      {"id": 4, "nome":"COMBO-04", "lanche":"X-TUDO", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 30,00"}
+  ],
+  "combos-especiais":[ 
+    {"id": 1, "nome":"COMBO-01", "lanche":"SUPER CHEDDAR", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 50,00"},
+    {"id": 2, "nome":"COMBO-02", "lanche":"SUPER BACON", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 50,00"},
+    {"id": 3, "nome":"COMBO-03", "lanche":"MEGA BACON", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 50,00"},
+    {"id": 4, "nome":"COMBO-04", "lanche":"MEGA CALABRESA", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 50,00"},
+    {"id": 5, "nome":"COMBO-05", "lanche":"MEGA FRANGO", "acompanhamento":"BATATA-FRITA", "bebida":"COCA-COLA 350ML", "valor":"R$ 50,00"}
+]
+  }
